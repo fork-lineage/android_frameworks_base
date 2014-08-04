@@ -22,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.util.AttributeSet;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
@@ -134,8 +135,9 @@ public class NumPadKey extends ViewGroup {
     }
 
     private void updateText() {
-       boolean scramblePin = (LineageSettings.System.getInt(getContext().getContentResolver(),
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0) == 1);
+        boolean scramblePin = LineageSettings.System.getIntForUser(getContext().getContentResolver(),
+                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, 0,
+                UserHandle.USER_CURRENT) == 1;
         if (mDigit >= 0) {
             mDigitText.setText(Integer.toString(mDigit));
             if (sKlondike == null) {
@@ -144,7 +146,7 @@ public class NumPadKey extends ViewGroup {
             if (sKlondike != null && sKlondike.length > mDigit) {
                 String klondike = sKlondike[mDigit];
                 final int len = klondike.length();
-                if (len > 0 || scramblePin) {
+                if (len > 0  || scramblePin) {
                     mKlondikeText.setText(klondike);
                 } else if (mKlondikeText.getVisibility() != View.GONE) {
                     mKlondikeText.setVisibility(View.INVISIBLE);
