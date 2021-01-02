@@ -301,6 +301,10 @@
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
+    <!-- VPN Tile -->
+    <uses-permission android:name="android.permission.MAINLINE_NETWORK_STACK" />
+    <uses-permission android:name="android.permission.NETWORK_STACK" />
+
     <!-- Reboot tile -->
     <uses-permission android:name="android.permission.REBOOT" />
     <uses-permission android:name="android.permission.RECOVERY" />
