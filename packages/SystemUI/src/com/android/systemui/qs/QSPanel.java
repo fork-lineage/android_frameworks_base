@@ -795,7 +795,7 @@ public class QSPanel extends LinearLayout implements Tunable {
         updatePadding();
     }
 
-    protected void updateBrightnessSliderPosition() {
+    private void updateBrightnessSliderPosition() {
         if (mBrightnessView == null) return;
         ViewGroup newParent = mUsingHorizontalLayout ? mHorizontalContentContainer : this;
         switchAllContentToParent(newParent, mTileLayout);
