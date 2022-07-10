@@ -5314,11 +5314,18 @@
 
     <integer name="config_chooser_max_targets_per_row">4</integer>
 
+    <!-- List of system components which are allowed to receive ServiceState entries in an
+         un-sanitized form, even if the location toggle is off. This is intended ONLY for system
+         components, such as the telephony stack, which require access to the full ServiceState for
+         tasks such as network registration. -->
+    <string-array name="config_serviceStateLocationAllowedPackages">
+        <item>"com.android.phone"</item>
+    </string-array>
+
     <!-- Enable face auth only when swiping security view -->
     <bool name="config_faceAuthOnlyOnSecurityView">false</bool>
 
     <!-- Paths to fast charging status file to detect whether an oem fast charger is active -->
     <string-array name="config_oemFastChargerStatusPaths" translatable="false">
     </string-array>
-
 </resources>
